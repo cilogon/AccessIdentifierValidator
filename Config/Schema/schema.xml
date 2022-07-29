@@ -1,0 +1,25 @@
+<?xml version="1.0" ?>
+<!--
+  While this schema mostly works with database prefixes, foreign key constraints
+  must be specified in raw SQL, which needs the prefixed table name.
+-->
+<schema version="0.3">
+  <table name="access_identifier_validators">
+    <field name="id" type="I">
+      <key />
+      <autoincrement />
+    </field>
+    <field name="co_identifier_validator_id" type="I">
+      <constraint>REFERENCES cm_co_identifier_validators(id)</constraint>
+    </field>
+    <field name="kdc_server_id" type="I" />
+    <field name="http_server_id" type="I" />
+    <field name="created" type="T" />
+    <field name="modified" type="T" />
+    
+    <index name="access_identifier_validators_i1">
+      <col>co_identifier_validator_id</col>
+      <unique />
+    </index>
+  </table>
+</schema>
